@@ -1,5 +1,5 @@
 {
-  "name": "svelte-app",
+  "name": "services",
   "version": "1.0.0",
   "devDependencies": {
     "gh-pages": "^2.0.1",
