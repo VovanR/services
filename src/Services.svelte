@@ -5,19 +5,24 @@
 
 	function processResponseJSON(services) {
 		return services.map(service => {
-			const url = service.href.replace(/github\.io/, 'com')
+			const url = service.href.replace(/github\.io/, 'com');
 			return {
 				...service,
 				href: url,
 				icon: service.icon ? `${url}${service.icon}` : null,
-			}
-		})
+			};
+		});
+	}
+
+	function isEnabled(service) {
+		return service.disabled !== true;
 	}
 
 	onMount(async () => {
 		const response = await fetch('https://vovanr.com/services-json/dist/services.json');
 		const servicesJSON = await response.json();
 		services = processResponseJSON(servicesJSON);
+		services = services.filter(isEnabled);
 	});
 </script>
 
