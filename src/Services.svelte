@@ -1,182 +1,182 @@
 <script>
-	import Icon from './Icon.svelte'
+  import Icon from './Icon.svelte'
 
-	export let activeTagsMap;
-	export let services = [];
+  export let activeTagsMap;
+  export let services = [];
 
-	function isHidden(service) {
-		return !isVisible(service);
-	}
+  function isHidden(service) {
+    return !isVisible(service);
+  }
 
-	function isVisible(service) {
-		return service.tags.some(tag => activeTagsMap[tag] === true);
-	}
+  function isVisible(service) {
+    return service.tags.some(tag => activeTagsMap[tag] === true);
+  }
 
-	function isFalsy(value) {
-		return !value;
-	}
+  function isFalsy(value) {
+    return !value;
+  }
 
-	function filterServices(services) {
-		if (Object.values(activeTagsMap).every(isFalsy)) {
-			return services
-		}
-		return services.filter(isVisible)
-	}
+  function filterServices(services) {
+    if (Object.values(activeTagsMap).every(isFalsy)) {
+      return services
+    }
+    return services.filter(isVisible)
+  }
 </script>
 
 <style>
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-		}
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
 
-		to {
-			opacity: 1;
-		}
-	}
+    to {
+      opacity: 1;
+    }
+  }
 
-	.services {
-		--items-in-line: 4;
+  .services {
+    --items-in-line: 4;
 
-		display: grid;
-		grid-template-columns: repeat(var(--items-in-line), 1fr);
-	}
+    display: grid;
+    grid-template-columns: repeat(var(--items-in-line), 1fr);
+  }
 
-	.services__loading {
-		color: transparent;
-		grid-column-start: 1;
-		grid-column-end: -1;
-		text-align: center;
-		min-height: 802px;
-	}
+  .services__loading {
+    color: transparent;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    text-align: center;
+    min-height: 802px;
+  }
 
-	@media (max-width: 740px) {
-		.services {
-			--items-in-line: 3;
-		}
-	}
+  @media (max-width: 740px) {
+    .services {
+      --items-in-line: 3;
+    }
+  }
 
-	@media (max-width: 650px) {
-		.services {
-			--items-in-line: 2;
-		}
-	}
+  @media (max-width: 650px) {
+    .services {
+      --items-in-line: 2;
+    }
+  }
 
-	@media (max-width: 420px) {
-		.services {
-			--items-in-line: 1;
-		}
-	}
+  @media (max-width: 420px) {
+    .services {
+      --items-in-line: 1;
+    }
+  }
 
-	.service {
-		--card-background-color: hsla(0, 0%, 100%, 1);
-		--icon-size: 32px;
+  .service {
+    --card-background-color: hsla(0, 0%, 100%, 1);
+    --icon-size: 32px;
 
-		display: grid;
-		position: relative;
-		animation-name: fadeIn;
-		animation-duration: 250ms;
-	}
+    display: grid;
+    position: relative;
+    animation-name: fadeIn;
+    animation-duration: 250ms;
+  }
 
-	.service:hover {
-		--card-background-color: hsla(0, 0%, 96%, 1);
-	}
+  .service:hover {
+    --card-background-color: hsla(0, 0%, 96%, 1);
+  }
 
-	.service__link {
-		display: block;
-		text-decoration: none;
-		padding: 15px 15px 25px;
-		border-radius: 5px;
-		background-color: var(--card-background-color);
-		transition: background-color 150ms ease;
-	}
+  .service__link {
+    display: block;
+    text-decoration: none;
+    padding: 15px 15px 25px;
+    border-radius: 5px;
+    background-color: var(--card-background-color);
+    transition: background-color 150ms ease;
+  }
 
-	.service__icon-placeholder {
-		width: var(--icon-size);
-		height: var(--icon-size);
-		margin: 10px 40px 15px;
-	}
+  .service__icon-placeholder {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    margin: 10px 40px 15px;
+  }
 
-	.service__icon {
-		width: 100%;
-		height: 100%;
-	}
+  .service__icon {
+    width: 100%;
+    height: 100%;
+  }
 
-	.service__name {
-		font-weight: 300;
-		font-size: 1em;
-		line-height: 1.2;
-		color: inherit;
-		margin: 0 0 .15em;
-	}
+  .service__name {
+    font-weight: 300;
+    font-size: 1em;
+    line-height: 1.2;
+    color: inherit;
+    margin: 0 0 .15em;
+  }
 
-	.service__link:hover .service__name {
-	}
+  .service__link:hover .service__name {
+  }
 
-	.service__description {
-		color: #90a4ae;
-		font-size: smaller;
-		line-height: 1.2;
-	}
+  .service__description {
+    color: #90a4ae;
+    font-size: smaller;
+    line-height: 1.2;
+  }
 
-	.service__source-link {
-		letter-spacing: 0.12em;
-		font-size: 0.6em;
-		position: absolute;
-		right: 15px;
-		bottom: 5px;
-		visibility: hidden;
-		opacity: 0;
-	}
+  .service__source-link {
+    letter-spacing: 0.12em;
+    font-size: 0.6em;
+    position: absolute;
+    right: 15px;
+    bottom: 5px;
+    visibility: hidden;
+    opacity: 0;
+  }
 
-	.service:hover .service__source-link {
-		transition: opacity 250ms ease, visibility 250ms ease;
-		opacity: 0.5;
-		visibility: visible;
-	}
+  .service:hover .service__source-link {
+    transition: opacity 250ms ease, visibility 250ms ease;
+    opacity: 0.5;
+    visibility: visible;
+  }
 
-	.service:hover .service__source-link:hover {
-		opacity: 1;
-	}
+  .service:hover .service__source-link:hover {
+    opacity: 1;
+  }
 
-	.hidden {
-		display: none;
-	}
+  .hidden {
+    display: none;
+  }
 </style>
 
 <div class="services">
-	{#each filterServices(services) as service (service.id)}
-		<div class="service">
-			<a
-				class="service__link"
-				href={service.href}
-			>
-				<figure class="service__icon-placeholder">
-					<Icon
-						class="service__icon"
-						url="{service.icon}"
-					/>
-				</figure>
+  {#each filterServices(services) as service (service.id)}
+    <div class="service">
+      <a
+        class="service__link"
+        href={service.href}
+      >
+        <figure class="service__icon-placeholder">
+          <Icon
+            class="service__icon"
+            url="{service.icon}"
+          />
+        </figure>
 
-				<h2 class="service__name">
-					{service.name}
-				</h2>
+        <h2 class="service__name">
+          {service.name}
+        </h2>
 
-				<div class="service__description">
-					{service.desc}
-				</div>
-			</a>
+        <div class="service__description">
+          {service.desc}
+        </div>
+      </a>
 
-			<a
-				class="service__source-link"
-				href={service.source}
-			>
-				Исходный код
-			</a>
-		</div>
-	{:else}
-		<div class="services__loading">
-			Loading Services...
-		</div>
-	{/each}
+      <a
+        class="service__source-link"
+        href={service.source}
+      >
+        Исходный код
+      </a>
+    </div>
+  {:else}
+    <div class="services__loading">
+      Loading Services...
+    </div>
+  {/each}
 </div>
