@@ -3,6 +3,7 @@
 	import {createEventDispatcher} from 'svelte';
 
 	let tags = [];
+	let activeTag = 'all';
 
 	const dispatch = createEventDispatcher();
 
@@ -26,7 +27,7 @@
 
 	function getTagsMap() {
 		return tags.reduce((acc, tag) => {
-			acc[tag.value] = tag.active;
+			acc[tag.value] = tag.value === activeTag;
 
 			return acc;
 		}, {});
@@ -56,7 +57,7 @@
 		user-select: none;
 	}
 
-	.tag__checkbox {
+	.tag__radio {
 		margin-right: 5px;
 		cursor: inherit;
 	}
@@ -67,15 +68,33 @@
 </style>
 
 <div class="tags">
+	<label
+		class="tag"
+		class:active="{activeTag === 'all'}"
+	>
+		<input
+			type="radio"
+			class="tag__radio"
+			value="all"
+			bind:group={activeTag}
+			on:change={handleChange}
+		/>
+
+		<span class="tag__name">
+			All
+		</span>
+	</label>
+
 	{#each tags as tag (tag.value)}
 		<label
 			class="tag"
-			class:active="{tag.active}"
+			class:active="{tag.value === activeTag}"
 		>
 			<input
-				type="checkbox"
-				class="tag__checkbox"
-				bind:checked={tag.active}
+				type="radio"
+				class="tag__radio"
+				value="{tag.value}"
+				bind:group={activeTag}
 				on:change={handleChange}
 			/>
 
