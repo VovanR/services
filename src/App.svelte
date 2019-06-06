@@ -1,9 +1,6 @@
 <script>
-	import Header from './Header.svelte';
-	import Container from './Container.svelte';
 	import Tags from './Tags.svelte';
 	import Services from './Services.svelte';
-	import Footer from './Footer.svelte';
 
 	import {onMount} from 'svelte';
 	import {fetchServices} from './services';
@@ -51,38 +48,16 @@
 </script>
 
 <style>
-	:global(body) {
-		margin: 0;
-		padding: 0;
-	}
-
-	h1 {
-		text-align: center;
-		color: #1A237E;
-		font-weight: normal;
-	}
 </style>
 
-<Container>
-	<div slot="header">
-		<Header
-			siteURL={siteURL}
-		/>
-	</div>
+<section class="services-container">
+	<Tags
+		tags="{tags}"
+		on:change="{onChangeActiveTags}"
+	/>
 
-	<div slot="content">
-		<Tags
-			tags="{tags}"
-			on:change="{onChangeActiveTags}"
-		/>
-
-		<Services
-			services="{services}"
-			activeTagsMap="{activeTagsMap}"
-		/>
-	</div>
-
-	<div slot="footer">
-		<Footer/>
-	</div>
-</Container>
+	<Services
+		services="{services}"
+		activeTagsMap="{activeTagsMap}"
+	/>
+</section>
