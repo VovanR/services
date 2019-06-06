@@ -48,7 +48,7 @@
 	{#await promise}
 		<span class="icon__loading"></span>
 	{:then }
-		<img class="icon__image" src="{url}"/>
+		<img class="icon__image" src="{url}" alt=""/>
 	{:catch }
 		<span class="icon__empty"></span>
 	{/await}
