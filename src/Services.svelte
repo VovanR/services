@@ -1,31 +1,8 @@
 <script>
-	import {onMount} from 'svelte';
+	import Icon from './Icon.svelte'
 
 	export let activeTagsMap;
-
-	let services = [];
-
-	function processResponseJSON(services) {
-		return services.map(service => {
-			const url = service.href.replace(/github\.io/, 'com');
-			return {
-				...service,
-				href: url,
-				icon: service.icon ? `${url}${service.icon}` : null,
-			};
-		});
-	}
-
-	function isEnabled(service) {
-		return service.disabled !== true;
-	}
-
-	onMount(async () => {
-		const response = await fetch('https://vovanr.com/services-json/dist/services.json');
-		const servicesJSON = await response.json();
-		services = processResponseJSON(servicesJSON);
-		services = services.filter(isEnabled);
-	});
+	export let services = [];
 
 	function isHidden(service) {
 		return !isVisible(service);
@@ -48,6 +25,16 @@
 </script>
 
 <style>
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+
 	.services {
 		--items-in-line: 4;
 
@@ -56,7 +43,11 @@
 	}
 
 	.services__loading {
+		color: transparent;
+		grid-column-start: 1;
+		grid-column-end: -1;
 		text-align: center;
+		min-height: 802px;
 	}
 
 	@media (max-width: 740px) {
@@ -83,6 +74,8 @@
 
 		display: grid;
 		position: relative;
+		animation-name: fadeIn;
+		animation-duration: 250ms;
 	}
 
 	.service:hover {
@@ -107,17 +100,6 @@
 	.service__icon {
 		width: 100%;
 		height: 100%;
-	}
-
-	.service__icon::after {
-		content: '';
-		color: silver;
-		background-color: hsla(0, 0%, 98%, 1);
-		display: block;
-		width: var(--icon-size);
-		height: var(--icon-size);
-		box-shadow: 0 0 0 1px hsla(0, 0%, 88%, 1);
-		border-radius: 50%;
 	}
 
 	.service__name {
@@ -170,11 +152,10 @@
 				href={service.href}
 			>
 				<figure class="service__icon-placeholder">
-					<img
+					<Icon
 						class="service__icon"
-						src={service.icon}
-						alt=""
-					>
+						url="{service.icon}"
+					/>
 				</figure>
 
 				<h2 class="service__name">
@@ -194,6 +175,8 @@
 			</a>
 		</div>
 	{:else}
-		<p class="services__loading">Loading Services...</p>
+		<div class="services__loading">
+			Loading Services...
+		</div>
 	{/each}
 </div>
