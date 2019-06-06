@@ -1,6 +1,8 @@
 <script>
 	import {onMount} from 'svelte';
 
+	export let activeTagsMap;
+
 	let services = [];
 
 	function processResponseJSON(services) {
@@ -24,6 +26,25 @@
 		services = processResponseJSON(servicesJSON);
 		services = services.filter(isEnabled);
 	});
+
+	function isHidden(service) {
+		return !isVisible(service);
+	}
+
+	function isVisible(service) {
+		return service.tags.some(tag => activeTagsMap[tag] === true);
+	}
+
+	function isFalsy(value) {
+		return !value;
+	}
+
+	function filterServices(services) {
+		if (Object.values(activeTagsMap).every(isFalsy)) {
+			return services
+		}
+		return services.filter(isVisible)
+	}
 </script>
 
 <style>
@@ -32,6 +53,10 @@
 
 		display: grid;
 		grid-template-columns: repeat(var(--items-in-line), 1fr);
+	}
+
+	.services__loading {
+		text-align: center;
 	}
 
 	@media (max-width: 740px) {
@@ -131,10 +156,14 @@
 	.service:hover .service__source-link:hover {
 		opacity: 1;
 	}
+
+	.hidden {
+		display: none;
+	}
 </style>
 
 <div class="services">
-	{#each services as service}
+	{#each filterServices(services) as service (service.id)}
 		<div class="service">
 			<a
 				class="service__link"
@@ -165,6 +194,6 @@
 			</a>
 		</div>
 	{:else}
-		<p>loading...</p>
+		<p class="services__loading">Loading Services...</p>
 	{/each}
 </div>
