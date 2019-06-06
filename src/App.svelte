@@ -42,9 +42,6 @@
   function onChangeActiveTags({detail: {value}}) {
     activeTagsMap = value
   }
-
-  export let name;
-  export let siteURL;
 </script>
 
 <style>
