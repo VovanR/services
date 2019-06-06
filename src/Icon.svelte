@@ -26,12 +26,6 @@
 </script>
 
 <style>
-  .icon {
-  }
-
-  .icon__image {
-  }
-
   .icon__loading,
   .icon__empty {
     display: block;

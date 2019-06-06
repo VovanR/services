@@ -110,9 +110,6 @@
     margin: 0 0 .15em;
   }
 
-  .service__link:hover .service__name {
-  }
-
   .service__description {
     color: #90a4ae;
     font-size: smaller;
@@ -137,10 +134,6 @@
 
   .service:hover .service__source-link:hover {
     opacity: 1;
-  }
-
-  .hidden {
-    display: none;
   }
 </style>
 

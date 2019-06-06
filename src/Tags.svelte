@@ -73,9 +73,6 @@
     --background-color: hsla(0, 0%, 96%, 1);
     color: #3304ff;
   }
-
-  .tag_name_all {
-  }
 </style>
 
 <div class="tags">
