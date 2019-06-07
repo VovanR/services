@@ -120,8 +120,10 @@
     letter-spacing: 0.12em;
     font-size: 0.6em;
     position: absolute;
-    right: 15px;
-    bottom: 5px;
+    right: 0;
+    bottom: 0;
+    padding-right: 15px;
+    padding-bottom: 5px;
     visibility: hidden;
     opacity: 0;
   }
@@ -134,6 +136,34 @@
 
   .service:hover .service__source-link:hover {
     opacity: 1;
+  }
+
+  @media (max-width: 420px) {
+    .service__link {
+      display: grid;
+      padding: 10px 10px 18px 10px;
+      grid-template-columns: 50px auto;
+      grid-template-areas: "icon name"
+                           "icon description";
+    }
+
+    .service__icon-placeholder {
+      grid-area: icon;
+      margin: 0;
+    }
+
+    .service__name {
+      grid-area: name;
+    }
+
+    .service__description {
+      grid-area: description;
+    }
+
+    .service__source-link {
+      padding-right: 10px;
+      padding-bottom: 3px;
+    }
   }
 </style>
 
