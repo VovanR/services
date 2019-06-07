@@ -124,17 +124,16 @@
     bottom: 0;
     padding-right: 15px;
     padding-bottom: 5px;
-    visibility: hidden;
     opacity: 0;
+    transition: opacity 250ms 500ms ease;
   }
 
   .service:hover .service__source-link {
-    transition: opacity 250ms ease, visibility 250ms ease;
     opacity: 0.5;
-    visibility: visible;
   }
 
-  .service:hover .service__source-link:hover {
+  .service .service__source-link:hover {
+    transition: opacity 150ms 0ms ease;
     opacity: 1;
   }
 
