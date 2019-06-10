@@ -1,6 +1,11 @@
 # Services
 
----
+[![Dependency Status][depstat-image]][depstat-url]
+[![DevDependency Status][depstat-dev-image]][depstat-dev-url]
+
+> My services
+
+Demo: [vovanr.github.io/services][demo]
 
 Powered by [Svelte](https://svelte.dev).
 
@@ -17,5 +22,12 @@ npm run deploy
 ```
 
 ## License
+MIT © [Vladimir Rodkin](https://github.com/VovanR)
 
-You can use code (HTML/JS/CSS) of this website, but you *can’t* use images and content.
+[demo]: https://vovanr.github.io/services
+
+[depstat-url]: https://david-dm.org/VovanR/services
+[depstat-image]: https://david-dm.org/VovanR/services.svg?style=flat-square
+
+[depstat-dev-url]: https://david-dm.org/VovanR/services
+[depstat-dev-image]: https://david-dm.org/VovanR/services/dev-status.svg?style=flat-square
