@@ -13,6 +13,8 @@
     "start": "sirv public",
     "start:dev": "sirv public --dev",
     "deploy": "npm run build && gh-pages -d public",
+    "test": "npm run test:testcafe",
+    "test:testcafe": "testcafe --assertion-timeout=1000 \"firefox:headless\" test-cafe/*.test.js --app \"npm run build && npm run start\""
   },
   "devDependencies": {
     "gh-pages": "^2.0.1",
@@ -24,7 +26,8 @@
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.0.0",
     "sirv-cli": "^0.4.3",
-    "svelte": "^3.4.4"
+    "svelte": "^3.4.4",
+    "testcafe": "^1.2.0"
   },
   "bugs": {
     "url": "https://github.com/VovanR/services/issues"

@@ -1,5 +1,7 @@
 # Services
 
+[![Tested with TestCafe][testcafe-image]][testcafe-url]
+
 [![Dependency Status][depstat-image]][depstat-url]
 [![DevDependency Status][depstat-dev-image]][depstat-dev-url]
 
@@ -25,6 +27,9 @@ npm run deploy
 MIT © [Vladimir Rodkin](https://github.com/VovanR)
 
 [demo]: https://vovanr.github.io/services
+
+[testcafe-url]: https://github.com/DevExpress/testcafe
+[testcafe-image]: https://img.shields.io/badge/tested%20with-TestCafe-2fa4cf.svg?style=flat-square
 
 [depstat-url]: https://david-dm.org/VovanR/services
 [depstat-image]: https://david-dm.org/VovanR/services.svg?style=flat-square
