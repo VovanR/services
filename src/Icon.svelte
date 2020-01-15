@@ -1,5 +1,4 @@
 <script>
-  export let className = '';
   export let url;
   let loaded = false;
 
