@@ -1,5 +1,7 @@
 <script>
   export let url;
+  let className;
+  export {className as class};
   let loaded = false;
 
   function fetchServiceSrcIcon(iconURL) {
@@ -37,7 +39,7 @@
   }
 </style>
 
-<div class="icon">
+<div class="icon {className}">
   {#await promise}
     <span class="icon__loading"></span>
   {:then }
