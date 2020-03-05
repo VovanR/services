@@ -4,6 +4,8 @@
   export let activeTagsMap;
   export let services = [];
 
+  $: filteredServices = filterServices(services, activeTagsMap)
+
   function isHidden(service) {
     return !isVisible(service);
   }
@@ -16,7 +18,7 @@
     return !value;
   }
 
-  function filterServices(services) {
+  function filterServices(services, activeTagsMap) {
     if (Object.values(activeTagsMap).every(isFalsy)) {
       return services
     }
@@ -167,38 +169,40 @@
 </style>
 
 <div class="services">
-  {#each filterServices(services) as service (service.id)}
-    <div class="service">
-      <a
-        class="service__link"
-        href={service.href}
-      >
-        <figure class="service__icon-placeholder">
-          <Icon
-            class="service__icon"
-            url="{service.icon}"
-          />
-        </figure>
+  {#if filteredServices}
+    {#each filteredServices as service, i (service.id)}
+      <div class="service">
+        <a
+          class="service__link"
+          href={service.href}
+        >
+          <figure class="service__icon-placeholder">
+            <Icon
+              class="service__icon"
+              url="{service.icon}"
+            />
+          </figure>
 
-        <h2 class="service__name">
-          {service.name}
-        </h2>
+          <h2 class="service__name">
+            {service.name}
+          </h2>
 
-        <div class="service__description">
-          {service.desc}
-        </div>
-      </a>
+          <div class="service__description">
+            {service.desc}
+          </div>
+        </a>
 
-      <a
-        class="service__source-link"
-        href={service.source}
-      >
-        Исходный код
-      </a>
-    </div>
+        <a
+          class="service__source-link"
+          href={service.source}
+        >
+          Исходный код
+        </a>
+      </div>
+    {/each}
   {:else}
     <div class="services__loading">
       Loading Services...
     </div>
-  {/each}
+  {/if}
 </div>

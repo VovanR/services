@@ -133,3 +133,14 @@ test
     .expect(servicesElement.find('.service').count).eql(1)
     .expect(servicesElement.find('.service').textContent).contains('String Cases');
 });
+
+test
+  .requestHooks(mockServices)
+  ('should hide loading message after data loaded', async t => {
+  const tagsLoadingMessage = tagsElement.find('.tags__loading');
+  const servicesLoadingMessage = servicesElement.find('.services__loading')
+
+  await t
+    .expect(tagsLoadingMessage.exists).notOk()
+    .expect(servicesLoadingMessage.exists).notOk();
+});
