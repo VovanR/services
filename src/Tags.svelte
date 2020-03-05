@@ -95,26 +95,28 @@
     </label>
   {/if}
 
-  {#each tags as tag (tag.value)}
-    <label
-      class="tag"
-      class:active="{tag.value === activeTag}"
-    >
-      <input
-        type="radio"
-        class="tag__radio"
-        value="{tag.value}"
-        bind:group={activeTag}
-        on:change={handleChange}
-      />
+  {#if tags.length > 0}
+    {#each tags as tag, i (tag.value)}
+      <label
+        class="tag"
+        class:active="{tag.value === activeTag}"
+      >
+        <input
+          type="radio"
+          class="tag__radio"
+          value="{tag.value}"
+          bind:group={activeTag}
+          on:change={handleChange}
+        />
 
-      <span class="tag__name">
-        {tag.label}
-      </span>
-    </label>
+        <span class="tag__name">
+          {tag.label}
+        </span>
+      </label>
+    {/each}
   {:else}
     <div class="tags__loading">
       Loading Tags...
     </div>
-  {/each}
+  {/if}
 </div>
