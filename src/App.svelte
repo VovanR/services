@@ -1,4 +1,5 @@
 <script>
+  import Search from './Search.svelte';
   import Tags from './Tags.svelte';
   import Services from './Services.svelte';
 
@@ -12,6 +13,7 @@
 
   let services = [];
   let tags = [];
+  let search = '';
 
   function collectUsedTags(services) {
     const usedTags = new Set();
@@ -39,6 +41,10 @@
 
   let activeTagsMap = {};
 
+  function onChangeSearch({detail: {value}}) {
+    search = value
+  }
+
   function onChangeActiveTags({detail: {value}}) {
     activeTagsMap = value
   }
@@ -48,6 +54,11 @@
 </style>
 
 <section class="services-container">
+  <Search
+    search="{search}"
+    on:change="{onChangeSearch}"
+  />
+
   <Tags
     tags="{tags}"
     on:change="{onChangeActiveTags}"
@@ -56,5 +67,6 @@
   <Services
     services="{services}"
     activeTagsMap="{activeTagsMap}"
+    search="{search}"
   />
 </section>

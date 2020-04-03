@@ -3,8 +3,9 @@
 
   export let activeTagsMap;
   export let services = [];
+  export let search;
 
-  $: filteredServices = filterServices(services, activeTagsMap)
+  $: filteredServices = filterServices(services, activeTagsMap, search)
 
   function isHidden(service) {
     return !isVisible(service);
@@ -18,11 +19,31 @@
     return !value;
   }
 
-  function filterServices(services, activeTagsMap) {
-    if (Object.values(activeTagsMap).every(isFalsy)) {
+  function filterServices(services, activeTagsMap, search) {
+    const allTagsActive = Object.values(activeTagsMap).every(isFalsy)
+
+    if (
+      allTagsActive &&
+      search === ''
+    ) {
       return services
     }
-    return services.filter(isVisible)
+
+    let filtered = services
+
+    if (allTagsActive === false) {
+      filtered = services.filter(isVisible)
+    }
+
+    if (search !== '') {
+      // From 'jspt' makes 'j.*s.*p.*t' to match 'JavaScript'
+      const pattern = search.split('').join('.*')
+      const regexp = new RegExp(pattern, 'i')
+
+      filtered = filtered.filter(service => regexp.test(service.name))
+    }
+
+    return filtered
   }
 </script>
 
@@ -80,10 +101,6 @@
     animation-duration: 250ms;
   }
 
-  .service:hover {
-    --card-background-color: hsla(0, 0%, 96%, 1);
-  }
-
   .service__link {
     display: block;
     text-decoration: none;
@@ -91,6 +108,15 @@
     border-radius: 5px;
     background-color: var(--card-background-color);
     transition: background-color 150ms ease;
+  }
+
+  .service__link:hover {
+    --card-background-color: hsla(0, 0%, 96%, 1);
+  }
+
+  .service__link:focus {
+    --card-background-color: hsla(0, 0%, 96%, 1);
+    outline: none;
   }
 
   .service__icon-placeholder {
@@ -195,6 +221,7 @@
         <a
           class="service__source-link"
           href={service.source}
+          tabindex="-1"
         >
           Исходный код
         </a>
