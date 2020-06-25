@@ -14,7 +14,7 @@
       fetch(iconURL)
         .then(resp => {
           if (resp.ok) {
-            resolve();
+            resolve(iconURL);
           } else {
             reject();
           }
@@ -42,9 +42,9 @@
 <div class="icon {className}">
   {#await promise}
     <span class="icon__loading"></span>
-  {:then }
+  {:then url}
     <img class="icon__image" src="{url}" alt=""/>
-  {:catch }
+  {:catch error}
     <span class="icon__empty"></span>
   {/await}
 </div>
