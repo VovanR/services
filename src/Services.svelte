@@ -192,12 +192,25 @@
       padding-bottom: 3px;
     }
   }
+
+  /* Popular */
+  .service.popular::after {
+    display: block;
+    content: '★';
+    color: #ffc107;
+    position: absolute;
+    right: 85px;
+    top: 15px;
+  }
 </style>
 
 <div class="services">
   {#if filteredServices}
     {#each filteredServices as service, i (service.id)}
-      <div class="service">
+      <div
+        class="service"
+        class:popular={service.popular}
+      >
         <a
           class="service__link"
           href={service.href}
