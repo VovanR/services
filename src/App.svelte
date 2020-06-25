@@ -10,6 +10,9 @@
   export let servicesURL;
   export let tagsURL;
   export let servicesBlackList;
+  export let popularServices;
+
+  const popularServicesSet = new Set(popularServices);
 
   let services = [];
   let tags = [];
@@ -27,11 +30,22 @@
     return usedTags;
   }
 
+  function filterBlacklist(service) {
+    return !servicesBlackList.includes(service.id);
+  }
+
+  function processPopular(service) {
+    return {
+      ...service,
+      popular: popularServicesSet.has(service.id),
+    };
+  }
+
   onMount(async () => {
     const allServices = await fetchServices(servicesURL);
-    services = allServices.filter(service => {
-      return !servicesBlackList.includes(service.id);
-    });
+    services = allServices
+      .filter(filterBlacklist)
+      .map(processPopular);
 
     const allTags = await fetchTags(tagsURL);
 

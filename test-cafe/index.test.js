@@ -95,6 +95,16 @@ test
       .expect(servicesElement.find('.service').nth(0).textContent).contains('Time Progress');
   });
 
+test
+  .requestHooks(mockServices)
+  ('should render "Popular" mark', async t => {
+    await t
+      .expect(servicesElement.find('.service').nth(0).textContent).contains('Time Progress')
+      .expect(servicesElement.find('.service').nth(0).hasClass('popular')).notOk()
+      .expect(servicesElement.find('.service').nth(2).textContent).contains('Time Calculator')
+      .expect(servicesElement.find('.service').nth(2).hasClass('popular')).ok();
+  });
+
 test('should render "All" tag at first position', async t => {
   await t
     .expect(tagsElement.find('.tag').textContent).contains('Все');

@@ -10,6 +10,12 @@ const app = new App({
     servicesBlackList: [
       'notes',
     ],
+    popularServices: [
+      'dozed-off',
+      'from-date-to-date',
+      'when-to-go-from-work',
+      'time-calculator',
+    ],
   }
 });
 
