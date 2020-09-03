@@ -2,10 +2,10 @@
   "version": 3,
   "file": "bundle.css",
   "sources": [
-    "../Icon.svelte",
-    "../Search.svelte",
-    "../Services.svelte",
-    "../Tags.svelte"
+    "Icon.svelte",
+    "Search.svelte",
+    "Services.svelte",
+    "Tags.svelte"
   ],
   "sourcesContent": [
     "<script>\n  export let url;\n  let className;\n  export {className as class};\n  let loaded = false;\n\n  function fetchServiceSrcIcon(iconURL) {\n    return new Promise((resolve, reject) => {\n      if (iconURL === null) {\n        reject();\n        return;\n      }\n\n      fetch(iconURL)\n        .then(resp => {\n          if (resp.ok) {\n            resolve(iconURL);\n          } else {\n            reject();\n          }\n        })\n        .catch(() => reject());\n    });\n  }\n\n  let promise = fetchServiceSrcIcon(url);\n</script>\n\n<style>\n  .icon__loading,\n  .icon__empty {\n    display: block;\n    color: silver;\n    background-color: hsla(0, 0%, 98%, 1);\n    width: var(--icon-size);\n    height: var(--icon-size);\n    border: 1px solid hsla(0, 0%, 88%, 1);\n    border-radius: 50%;\n  }\n</style>\n\n<div class=\"icon {className}\">\n  {#await promise}\n    <span class=\"icon__loading\"></span>\n  {:then url}\n    <img class=\"icon__image\" src=\"{url}\" alt=\"\"/>\n  {:catch error}\n    <span class=\"icon__empty\"></span>\n  {/await}\n</div>\n",
