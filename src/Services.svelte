@@ -199,7 +199,7 @@
     content: '★';
     color: #ffc107;
     position: absolute;
-    right: 85px;
+    left: 100px;
     top: 15px;
   }
 </style>
