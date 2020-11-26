@@ -165,6 +165,21 @@
     opacity: 1;
   }
 
+  /* Popular */
+  .service.popular .service__icon-placeholder {
+    position: relative;
+  }
+
+  .service.popular .service__icon-placeholder::after {
+    display: block;
+    content: '★';
+    color: #ffc107;
+    position: absolute;
+    left: 100%;
+    top: -10px;
+    margin-left: 13px;
+  }
+
   @media (max-width: 420px) {
     .service__link {
       display: grid;
@@ -191,16 +206,11 @@
       padding-right: 10px;
       padding-bottom: 3px;
     }
-  }
 
-  /* Popular */
-  .service.popular::after {
-    display: block;
-    content: '★';
-    color: #ffc107;
-    position: absolute;
-    left: 100px;
-    top: 15px;
+    /* Popular */
+    .service.popular .service__icon-placeholder::after {
+      margin-left: 0;
+    }
   }
 </style>
 
