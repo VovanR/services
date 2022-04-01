@@ -246,7 +246,7 @@
           href={service.source}
           tabindex="-1"
         >
-          Исходный код
+          Source code
         </a>
       </div>
     {/each}
