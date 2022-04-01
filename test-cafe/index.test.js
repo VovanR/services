@@ -10,7 +10,7 @@ const testServicesJSON = [
   {
     "id": "time-progress",
     "name": "Time Progress",
-    "desc": "Отображает статистику по текущему времени",
+    "desc": "Time statistics",
     "href": "https://vovanr.github.io/time-progress",
     "source": "https://github.com/VovanR/time-progress",
     "date": "2019-04-19",
@@ -24,7 +24,7 @@ const testServicesJSON = [
   {
     "id": "string-cases",
     "name": "String Cases",
-    "desc": "Конвертирует название переменной в различные регистры",
+    "desc": "Convert variable name to various cases",
     "href": "https://vovanr.github.io/string-cases",
     "source": "https://github.com/VovanR/string-cases",
     "date": "2019-04-01",
@@ -38,7 +38,7 @@ const testServicesJSON = [
   {
     "id": "time-calculator",
     "name": "Time Calculator",
-    "desc": "Складывает/Вычитает время",
+    "desc": "Calculate time durations",
     "href": "https://vovanr.github.io/time-calculator",
     "source": "https://github.com/VovanR/time-calculator",
     "date": "2019-01-30",
@@ -107,7 +107,7 @@ test
 
 test('should render "All" tag at first position', async t => {
   await t
-    .expect(tagsElement.find('.tag').textContent).contains('Все');
+    .expect(tagsElement.find('.tag').textContent).contains('All');
 });
 
 test

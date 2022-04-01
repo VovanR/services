@@ -90,7 +90,7 @@
       />
 
       <span class="tag__name">
-        Все
+        All
       </span>
     </label>
   {/if}
