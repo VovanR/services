@@ -68,7 +68,7 @@ const mockServices = RequestMock()
 
 // eslint-disable-next-line no-unused-expressions
 fixture`Getting Started`
-  .page`http://localhost:5000`;
+  .page`http://localhost:8080`;
 
 test('should have application container', async t => {
   await t

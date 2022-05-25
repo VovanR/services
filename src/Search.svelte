@@ -1,7 +1,7 @@
 <script>
   import {createEventDispatcher} from 'svelte';
 
-  let search = '';
+  export let search = '';
 
   const dispatch = createEventDispatcher();
 

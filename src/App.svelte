@@ -69,7 +69,7 @@
 
 <section class="services-container">
   <Search
-    search="{search}"
+    bind:search={search}
     on:change="{onChangeSearch}"
   />
 
