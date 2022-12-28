@@ -3,8 +3,6 @@
 [![Tested with TestCafe][testcafe-image]][testcafe-url]
 
 [![Build Status][build-image]][build-url]
-[![Dependency Status][depstat-image]][depstat-url]
-[![DevDependency Status][depstat-dev-image]][depstat-dev-url]
 
 > My services
 
@@ -34,9 +32,3 @@ MIT © [Vladimir Rodkin](https://github.com/VovanR)
 
 [build-url]: https://github.com/VovanR/services/actions?query=workflow%3A%22End-to-End+Tests%22
 [build-image]: https://img.shields.io/github/workflow/status/VovanR/services/End-to-End%20Tests?style=flat-square
-
-[depstat-url]: https://david-dm.org/VovanR/services
-[depstat-image]: https://david-dm.org/VovanR/services.svg?style=flat-square
-
-[depstat-dev-url]: https://david-dm.org/VovanR/services
-[depstat-dev-image]: https://david-dm.org/VovanR/services/dev-status.svg?style=flat-square
