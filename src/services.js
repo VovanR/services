@@ -1,6 +1,6 @@
 function processResponseJSON(services) {
   return services.map(service => {
-    const url = service.href.replace(/github\.io/, 'com');
+    const url = service.href;
 
     return {
       ...service,
