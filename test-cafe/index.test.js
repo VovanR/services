@@ -61,9 +61,9 @@ const testTagsJSON = {
 };
 
 const mockServices = RequestMock()
-  .onRequestTo('/services-json/dist/services.json')
+  .onRequestTo('http://localhost:8080/services-json/dist/services.json')
   .respond(testServicesJSON, 200, {'access-control-allow-origin': '*'})
-  .onRequestTo('/services-json/src/tags.json')
+  .onRequestTo('http://localhost:8080/services-json/src/tags.json')
   .respond(testTagsJSON, 200, {'access-control-allow-origin': '*'});
 
 // eslint-disable-next-line no-unused-expressions
