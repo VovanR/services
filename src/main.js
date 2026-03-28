@@ -1,6 +1,6 @@
 import App from './App.svelte';
 
-const SERVICES_JSON_PROJECT_URL = 'https://vovanr.github.io/services-json';
+const SERVICES_JSON_PROJECT_URL = '/services-json';
 
 const app = new App({
   target: document.querySelector('#services-app-container'),
