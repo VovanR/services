@@ -61,9 +61,9 @@ const testTagsJSON = {
 };
 
 const mockServices = RequestMock()
-  .onRequestTo('https://vovanr.com/services-json/dist/services.json')
+  .onRequestTo('https://vovanr.github.io/services-json/dist/services.json')
   .respond(testServicesJSON, 200, {'access-control-allow-origin': '*'})
-  .onRequestTo('https://vovanr.com/services-json/src/tags.json')
+  .onRequestTo('https://vovanr.github.io/services-json/src/tags.json')
   .respond(testTagsJSON, 200, {'access-control-allow-origin': '*'});
 
 // eslint-disable-next-line no-unused-expressions
